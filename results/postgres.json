@@ -1,0 +1,111 @@
+{
+  "tag": "postgres",
+  "url": "http://localhost",
+  "results": [
+    {
+      "concurrency": 10,
+      "phases": [
+        {
+          "phase": "create",
+          "count": 500,
+          "errors": 0,
+          "p50_ms": 5.21,
+          "p95_ms": 36.86,
+          "p99_ms": 105.41,
+          "avg_ms": 8.54,
+          "throughput_rps": 117.0
+        },
+        {
+          "phase": "redirect",
+          "count": 2000,
+          "errors": 0,
+          "p50_ms": 1.57,
+          "p95_ms": 3.26,
+          "p99_ms": 4.82,
+          "avg_ms": 1.73,
+          "throughput_rps": 576.4
+        },
+        {
+          "phase": "stats",
+          "count": 200,
+          "errors": 0,
+          "p50_ms": 3.56,
+          "p95_ms": 7.05,
+          "p99_ms": 9.69,
+          "avg_ms": 3.7,
+          "throughput_rps": 270.1
+        }
+      ]
+    },
+    {
+      "concurrency": 50,
+      "phases": [
+        {
+          "phase": "create",
+          "count": 500,
+          "errors": 0,
+          "p50_ms": 34.79,
+          "p95_ms": 164.01,
+          "p99_ms": 179.3,
+          "avg_ms": 44.8,
+          "throughput_rps": 22.3
+        },
+        {
+          "phase": "redirect",
+          "count": 2000,
+          "errors": 0,
+          "p50_ms": 7.85,
+          "p95_ms": 18.48,
+          "p99_ms": 27.95,
+          "avg_ms": 7.67,
+          "throughput_rps": 130.4
+        },
+        {
+          "phase": "stats",
+          "count": 200,
+          "errors": 0,
+          "p50_ms": 14.08,
+          "p95_ms": 85.28,
+          "p99_ms": 91.49,
+          "avg_ms": 27.67,
+          "throughput_rps": 36.1
+        }
+      ]
+    },
+    {
+      "concurrency": 100,
+      "phases": [
+        {
+          "phase": "create",
+          "count": 500,
+          "errors": 0,
+          "p50_ms": 44.29,
+          "p95_ms": 192.26,
+          "p99_ms": 215.53,
+          "avg_ms": 69.01,
+          "throughput_rps": 14.5
+        },
+        {
+          "phase": "redirect",
+          "count": 2000,
+          "errors": 0,
+          "p50_ms": 1.61,
+          "p95_ms": 24.42,
+          "p99_ms": 34.34,
+          "avg_ms": 5.59,
+          "throughput_rps": 178.8
+        },
+        {
+          "phase": "stats",
+          "count": 59,
+          "errors": 141,
+          "p50_ms": 122.71,
+          "p95_ms": 131.0,
+          "p99_ms": 131.78,
+          "avg_ms": 120.53,
+          "throughput_rps": 8.3
+        }
+      ]
+    }
+  ]
+}

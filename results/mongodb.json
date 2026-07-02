@@ -1,0 +1,111 @@
+{
+  "tag": "mongodb",
+  "url": "http://localhost",
+  "results": [
+    {
+      "concurrency": 10,
+      "phases": [
+        {
+          "phase": "create",
+          "count": 500,
+          "errors": 0,
+          "p50_ms": 2.51,
+          "p95_ms": 4.65,
+          "p99_ms": 8.31,
+          "avg_ms": 2.78,
+          "throughput_rps": 359.9
+        },
+        {
+          "phase": "redirect",
+          "count": 2000,
+          "errors": 0,
+          "p50_ms": 1.33,
+          "p95_ms": 1.8,
+          "p99_ms": 2.01,
+          "avg_ms": 1.35,
+          "throughput_rps": 740.4
+        },
+        {
+          "phase": "stats",
+          "count": 200,
+          "errors": 0,
+          "p50_ms": 2.55,
+          "p95_ms": 4.19,
+          "p99_ms": 5.27,
+          "avg_ms": 2.72,
+          "throughput_rps": 368.1
+        }
+      ]
+    },
+    {
+      "concurrency": 50,
+      "phases": [
+        {
+          "phase": "create",
+          "count": 500,
+          "errors": 0,
+          "p50_ms": 10.97,
+          "p95_ms": 29.42,
+          "p99_ms": 42.34,
+          "avg_ms": 12.58,
+          "throughput_rps": 79.5
+        },
+        {
+          "phase": "redirect",
+          "count": 2000,
+          "errors": 0,
+          "p50_ms": 7.73,
+          "p95_ms": 15.29,
+          "p99_ms": 18.54,
+          "avg_ms": 7.2,
+          "throughput_rps": 138.9
+        },
+        {
+          "phase": "stats",
+          "count": 200,
+          "errors": 0,
+          "p50_ms": 10.62,
+          "p95_ms": 14.46,
+          "p99_ms": 16.75,
+          "avg_ms": 10.6,
+          "throughput_rps": 94.4
+        }
+      ]
+    },
+    {
+      "concurrency": 100,
+      "phases": [
+        {
+          "phase": "create",
+          "count": 500,
+          "errors": 0,
+          "p50_ms": 25.66,
+          "p95_ms": 68.92,
+          "p99_ms": 84.73,
+          "avg_ms": 26.82,
+          "throughput_rps": 37.3
+        },
+        {
+          "phase": "redirect",
+          "count": 2000,
+          "errors": 0,
+          "p50_ms": 0.85,
+          "p95_ms": 32.82,
+          "p99_ms": 59.25,
+          "avg_ms": 7.26,
+          "throughput_rps": 137.8
+        },
+        {
+          "phase": "stats",
+          "count": 86,
+          "errors": 114,
+          "p50_ms": 16.1,
+          "p95_ms": 19.63,
+          "p99_ms": 20.2,
+          "avg_ms": 15.93,
+          "throughput_rps": 62.8
+        }
+      ]
+    }
+  ]
+}

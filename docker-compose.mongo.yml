@@ -1,0 +1,78 @@
+services:
+  mongodb:
+    image: mongo:7
+    volumes:
+      - mongodata:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api1:
+    build: .
+    environment:
+      DB_BACKEND: mongodb
+      MONGODB_URL: mongodb://mongodb:27017
+      MONGODB_DB: shorturl
+      REDIS_URL: redis://redis:6379/0
+      WORKER_ID: "1"
+      BASE_URL: http://localhost
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  api2:
+    build: .
+    environment:
+      DB_BACKEND: mongodb
+      MONGODB_URL: mongodb://mongodb:27017
+      MONGODB_DB: shorturl
+      REDIS_URL: redis://redis:6379/0
+      WORKER_ID: "2"
+      BASE_URL: http://localhost
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  click-worker:
+    build: .
+    command: ["python", "-m", "app.click_worker"]
+    environment:
+      DB_BACKEND: mongodb
+      MONGODB_URL: mongodb://mongodb:27017
+      MONGODB_DB: shorturl
+      REDIS_URL: redis://redis:6379/0
+      CLICK_FLUSH_INTERVAL: "10"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - api1
+      - api2
+
+volumes:
+  mongodata:
